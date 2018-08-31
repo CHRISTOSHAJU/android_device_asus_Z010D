@@ -127,7 +127,6 @@ void property_override_dual(char const system_prop[], char const vendor_prop[], 
 
 void vendor_load_properties()
 {
-
     char p_device[PROP_VALUE_MAX];
     unsigned long raw_id = -1;
     int rc;
@@ -150,6 +149,9 @@ void vendor_load_properties()
     property_override_dual("ro.product.device", "ro.vendor.product.device", p_device);
     property_override_dual("ro.product.model", "ro.vendor.product.model", "ASUS_Z010D");
     property_override_dual("ro.build.product", "ro.vendor.build.product", "ZC550KL");
+
+    // Init a dummy BT MAC address, will be overwritten later
+    property_set("ro.boot.btmacaddr", "00:00:00:00:00:00");
 
     /* Heap Set */
     property_set("dalvik.vm.heapstartsize", "8m");
@@ -178,6 +180,9 @@ void vendor_load_properties()
     property_override_dual("ro.product.model", "ro.vendor.product.model", "ASUS_Z010DD");
     property_override_dual("ro.build.product", "ro.vendor.build.product", "ZC550KL");
     property_set("ro.build.project.name", "ZC550KL");
+
+    // Init a dummy BT MAC address, will be overwritten later
+    property_set("ro.boot.btmacaddr", "00:00:00:00:00:00");
 
     /* Heap Set */
     property_set("dalvik.vm.heapstartsize", "5m");
